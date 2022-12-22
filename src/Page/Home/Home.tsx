@@ -12,6 +12,7 @@ import KrishImg from "../../assets/krish.jpg";
 import HasanImg from "../../assets/hasan.jpg";
 import SudhanshuImg from "../../assets/Sudhanshu.jpg";
 import ParagImg from "../../assets/parag.jpg";
+import PrajwalImg from "../../assets/Prajwal.jpg";
 import Card from "../../components/Card";
 import { Link } from "react-router-dom";
 
@@ -322,7 +323,7 @@ Business manager
                   bio: "Front End Developer",
                 },
                 {
-                  image: "",
+                  image: PrajwalImg,
                   name: "Prajwal Pakahale",
                   bio: "Project manager",
                 },
