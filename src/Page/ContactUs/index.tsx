@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 export default () => {
-    
   return (
     <section className="section hero v5 wf-section">
       <div className="container-default w-container">
@@ -21,13 +20,11 @@ export default () => {
                   data-w-id="bfc9454a-5762-abff-1fb2-68ec534c12fd"
                   className="mg-bottom-40px"
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor{" "}
-                  <span className="text-no-wrap">incididunt ut.</span>
+                  Give us a chance to clear your doubts
                 </p>
               </div>
             </div>
-            <div >
+            <div>
               <div className="heading-h3-size mg-bottom-16px">
                 Contact information
               </div>
@@ -55,16 +52,8 @@ export default () => {
               </div>
             </div>
           </div>
-          <div
-            
-            
-            className="card form w-form"
-          >
-            <form
-            
-              method="get"
-              
-            >
+          <div className="card form w-form">
+            <form method="get">
               <div className="w-layout-grid grid-2-columns form">
                 <div>
                   <label htmlFor="Name">Name</label>
@@ -76,6 +65,7 @@ export default () => {
                     data-name="Name"
                     placeholder="John Carter"
                     id="Name"
+                    required
                   />
                 </div>
                 <div>
@@ -88,6 +78,7 @@ export default () => {
                     data-name="Email"
                     placeholder="example@email.com"
                     id="Email"
+                    required
                   />
                 </div>
                 <div>
@@ -100,10 +91,11 @@ export default () => {
                     data-name="Phone"
                     placeholder="123 456 7890"
                     id="Phone"
+                    required
                   />
                 </div>
                 <div>
-                  <label htmlFor="Company">Company</label>
+                  <label htmlFor="Company">Company (optional)</label>
                   <input
                     type="text"
                     className="input w-input"
@@ -123,19 +115,16 @@ export default () => {
                     name="Message"
                     data-name="Message"
                     className="text-area w-input"
+                    required
                   ></textarea>
                 </div>
                 <input
                   type="submit"
                   value="Get in touch"
-               
-                  
                   className="btn-primary card-form w-button"
                 />
               </div>
             </form>
-          
-          
           </div>
         </div>
       </div>
