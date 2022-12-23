@@ -1,6 +1,49 @@
 import { Link } from "react-router-dom";
-
+import axios from "axios";
+import { useState } from "react";
 export default () => {
+  const [data, setData] = useState<{
+    name: string;
+    email: string;
+    phone: string;
+    idea: string;
+    company: string;
+  }>({
+    name: "",
+    email: "",
+    idea: "",
+    phone: "",
+    company: "",
+  });
+  const [sending, setSanding] = useState<boolean>(false);
+  const [text, setText] = useState<string>("");
+
+  const send_data = (e: Event | any) => {
+    e.preventDefault();
+    setText("Sending...");
+    setSanding((s) => !s);
+
+    axios.post("https://5gvhur.deta.dev/add", data).then(
+      () => {
+        setText("your data is sended");
+        setTimeout(() => {
+          setText("");
+        }, 500);
+        setSanding((s) => !s);
+        setData({
+          name: "",
+          email: "",
+          idea: "",
+          phone: "",
+          company: "",
+        });
+      },
+      () => {
+        setText("not sending 😔😔");
+        setSanding((s) => !s);
+      }
+    );
+  };
   return (
     <section className="section hero v5 wf-section">
       <div className="container-default w-container">
@@ -53,11 +96,13 @@ export default () => {
             </div>
           </div>
           <div className="card form w-form">
-            <form method="get">
+            <form onSubmit={send_data}>
               <div className="w-layout-grid grid-2-columns form">
                 <div>
                   <label htmlFor="Name">Name</label>
                   <input
+                    value={data.name}
+                    onChange={(e) => setData({ ...data, name: e.target.value })}
                     type="text"
                     className="input w-input"
                     maxLength={256}
@@ -71,6 +116,10 @@ export default () => {
                 <div>
                   <label htmlFor="Email">Email</label>
                   <input
+                    value={data.email}
+                    onChange={(e) =>
+                      setData({ ...data, email: e.target.value })
+                    }
                     type="email"
                     className="input w-input"
                     maxLength={256}
@@ -84,6 +133,10 @@ export default () => {
                 <div>
                   <label htmlFor="Phone">Phone</label>
                   <input
+                    value={data.phone}
+                    onChange={(e) =>
+                      setData({ ...data, phone: e.target.value })
+                    }
                     type="tel"
                     className="input w-input"
                     maxLength={256}
@@ -97,6 +150,10 @@ export default () => {
                 <div>
                   <label htmlFor="Company">Company (optional)</label>
                   <input
+                    value={data.company}
+                    onChange={(e) =>
+                      setData({ ...data, company: e.target.value })
+                    }
                     type="text"
                     className="input w-input"
                     maxLength={256}
@@ -109,6 +166,8 @@ export default () => {
                 <div className="text-area-wrapper">
                   <label htmlFor="Message">Your idea </label>
                   <textarea
+                    value={data.idea}
+                    onChange={(e) => setData({ ...data, idea: e.target.value })}
                     placeholder="Please type your message here..."
                     maxLength={5000}
                     id="Message"
@@ -120,8 +179,11 @@ export default () => {
                 </div>
                 <input
                   type="submit"
-                  value="Get in touch"
+                  value={sending ? text : "Get in touch"}
                   className="btn-primary card-form w-button"
+                  style={{
+                    backgroundColor: text.startsWith("err") ? "tomato" : "",
+                  }}
                 />
               </div>
             </form>
