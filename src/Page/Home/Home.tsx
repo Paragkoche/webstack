@@ -336,6 +336,11 @@ Business manager
                   bio: "Android Developer",
                 },
                 {
+                  image: "",
+                  name: "Gunjan Haldar",
+                  bio: "Android Developer",
+                },
+                {
                   image: AdityaImg,
                   name: "Aditya Chandure",
                   bio: "Full Stack Developer",
