@@ -13,6 +13,9 @@ import HasanImg from "../../assets/hasan.jpg";
 import SudhanshuImg from "../../assets/Sudhanshu.jpg";
 import ParagImg from "../../assets/parag.jpg";
 import PrajwalImg from "../../assets/Prajwal.jpg";
+import KrutikaImg from "../../assets/Krutika.jpg";
+import SanjviImg from "../../assets/Sanjvi.jpg";
+import AdityaImg from "../../assets/Aditya.jpg";
 import Card from "../../components/Card";
 import { Link } from "react-router-dom";
 
@@ -303,7 +306,7 @@ Business manager
                   bio: "AI and ML specialist",
                 },
                 {
-                  image: "",
+                  image: KrutikaImg,
                   name: "Krutika Meshram",
                   bio: "UI Designer",
                 },
@@ -313,7 +316,7 @@ Business manager
                   bio: "Data Science specialist",
                 },
                 {
-                  image: "",
+                  image: SanjviImg,
                   name: "Sanjvi Nishane",
                   bio: "Front End developer",
                 },
@@ -333,7 +336,7 @@ Business manager
                   bio: "Android Developer",
                 },
                 {
-                  image: "",
+                  image: AdityaImg,
                   name: "Aditya Chandure",
                   bio: "Full Stack Developer",
                 },
