@@ -11,7 +11,7 @@ import samikshaImg from "../../assets/samiksha.jpg";
 import KrishImg from "../../assets/krish.jpg";
 import HasanImg from "../../assets/hasan.jpg";
 import SudhanshuImg from "../../assets/Sudhanshu.jpg";
-import ParagImg from "../../assets/parag.jpg";
+import ParagImg from "../../assets/parag.webp";
 import PrajwalImg from "../../assets/Prajwal.jpg";
 import KrutikaImg from "../../assets/Krutika.jpg";
 import SanjviImg from "../../assets/Sanjvi.jpg";
