@@ -305,21 +305,13 @@ Business manager
                   name: "Hasan Khan",
                   bio: "AI and ML specialist",
                 },
-                {
-                  image: KrutikaImg,
-                  name: "Krutika Meshram",
-                  bio: "UI Designer",
-                },
+               
                 {
                   image: KrishImg,
                   name: "Krish Bagde",
                   bio: "Data Science specialist",
                 },
-                {
-                  image: SanjviImg,
-                  name: "Sanjvi Nishane",
-                  bio: "Front End developer",
-                },
+               
                 {
                   image: sarvashImg,
                   name: "Sarvesh Navare",
@@ -330,21 +322,14 @@ Business manager
                   name: "Prajwal Pakahale",
                   bio: "Project manager",
                 },
-                {
-                  image: "",
-                  name: "Harish Hedau",
-                  bio: "Android Developer",
+                 {
+                  image:"https://dxnish.carrd.co/assets/images/container01.jpg?v=7fe36460",
+                  name: "Danish Chavada",
+                  bio: "Ui/Ux Developer",
                 },
-                {
-                  image: "",
-                  name: "Gunjan Haldar",
-                  bio: "Android Developer",
-                },
-                {
-                  image: AdityaImg,
-                  name: "Aditya Chandure",
-                  bio: "Full Stack Developer",
-                },
+                
+                
+               
               ].map((v, i) => (
                 <div
                   className="slide-item-mg w-slide"
