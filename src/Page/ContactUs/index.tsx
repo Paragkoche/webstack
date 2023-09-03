@@ -80,7 +80,7 @@ export default () => {
                     <div className="card-contact-icon">
                       <div className="line-rounded-icon"></div>
                     </div>
-                    <div className="text-200 bold">webstack.org@gmail.com</div>
+                    <div className="text-200 bold">support@webstack.in</div>
                   </Link>
                   <Link
                     to="tel:+91 8080754160"
