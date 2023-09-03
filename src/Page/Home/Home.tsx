@@ -306,17 +306,9 @@ Business manager
                   bio: "AI and ML specialist",
                 },
                
-                {
-                  image: KrishImg,
-                  name: "Krish Bagde",
-                  bio: "Data Science specialist",
-                },
+              
                
-                {
-                  image: sarvashImg,
-                  name: "Sarvesh Navare",
-                  bio: "Front End Developer",
-                },
+              
                 {
                   image: PrajwalImg,
                   name: "Prajwal Pakahale",
