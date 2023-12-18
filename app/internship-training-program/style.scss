@@ -1,0 +1,19 @@
+#internshipFormMain {
+  max-width: 100vw;
+  //*-temp
+  //height: 100vh;
+  display: flex;
+  padding: 6vw 6vw;
+
+  .internship-form-container {
+    width: 100%;
+
+    .formElement {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+      padding-bottom: 20px;
+    }
+  }
+}
