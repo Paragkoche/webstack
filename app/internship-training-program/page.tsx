@@ -21,8 +21,7 @@ const inputElements: Array<{
   placeHolder: string;
   TextField?: typeof TextField.Input;
   size: Responsive<"3" | "2" | "1"> | undefined;
-  child?: ({ name, Function }: { name: string; Function: any }) => JSX.Element;
-  name: string;
+  child?: ({ name, Function }: { name: any; Function: any }) => JSX.Element;
 }> = [
   {
     Lable: "Full Name:",
@@ -30,7 +29,6 @@ const inputElements: Array<{
     placeHolder: "Enter your Full Name",
     size: "3",
     TextField: TextField.Input,
-    name: "entry.2059636522",
   },
   {
     Lable: "Contact Number",
@@ -38,7 +36,6 @@ const inputElements: Array<{
     placeHolder: "Enter your Contact Number",
     size: "3",
     TextField: TextField.Input,
-    name: "entry.1213609955",
   },
   {
     Lable: "Current Institution/University",
@@ -46,7 +43,6 @@ const inputElements: Array<{
     placeHolder: "Enter your Current Institution/University",
     size: "3",
     TextField: TextField.Input,
-    name: "entry.197399352",
   },
   {
     Lable: "Education / Degree and Major",
@@ -54,7 +50,6 @@ const inputElements: Array<{
     placeHolder: "Enter your Education / Degree and Major",
     size: "3",
     TextField: TextField.Input,
-    name: "entry.915614454",
   },
   {
     Lable: "Expected Graduation Year",
@@ -62,7 +57,6 @@ const inputElements: Array<{
     placeHolder: "Enter your Expected Graduation Year",
     size: "3",
     TextField: TextField.Input,
-    name: "entry.1108857489",
   },
 
   {
@@ -70,7 +64,7 @@ const inputElements: Array<{
     type: "input",
     placeHolder: "Select your experience",
     size: "3",
-    name: "entry.1810284299",
+
     child: () => (
       <RadioGroup.Root defaultValue="2">
         <Flex gap="3" direction="column">
@@ -280,7 +274,6 @@ const inputElements: Array<{
         />
       </Flex>
     ),
-    name: "entry.1128007592",
   },
 
   {
@@ -316,7 +309,6 @@ const inputElements: Array<{
         </Flex>
       </RadioGroup.Root>
     ),
-    name: "entry.1054318809",
   },
 
   {
@@ -325,7 +317,6 @@ const inputElements: Array<{
     placeHolder: "Enter Hours",
     size: "3",
     TextField: TextField.Input,
-    name: "entry.1651366155",
   },
   {
     Lable: "Specify your preferred time slots for the internship.",
@@ -333,7 +324,6 @@ const inputElements: Array<{
     placeHolder: "Enter time slot",
     size: "3",
     TextField: TextField.Input,
-    name: "entry.1384696040",
   },
   {
     Lable:
@@ -342,7 +332,6 @@ const inputElements: Array<{
     placeHolder: "Enter your interest",
     size: "3",
     TextField: TextField.Input,
-    name: "entry.391308544",
   },
   {
     Lable:
@@ -351,7 +340,6 @@ const inputElements: Array<{
     placeHolder: "Enter your skills",
     size: "3",
     TextField: TextField.Input,
-    name: "entry.1848413988",
   },
   {
     Lable:
@@ -360,7 +348,6 @@ const inputElements: Array<{
     placeHolder: "Enter your projects",
     size: "3",
     TextField: TextField.Input,
-    name: "entry.599463602",
   },
   {
     Lable: "Is there anything else you would like us to know about you?",
@@ -368,7 +355,6 @@ const inputElements: Array<{
     placeHolder: "Enter your hear",
     size: "3",
     TextField: TextField.Input,
-    name: "entry.766134268",
   },
 ];
 
@@ -415,9 +401,7 @@ const page = () => {
                         size={iE.size}
                       />
                     )}
-                    {iE.child && (
-                      <iE.child Function={setFData} name={iE.name} />
-                    )}
+                    {iE.child && <iE.child Function={setFData} name={""} />}
                   </div>
                 ))}
                 <Button>Apply</Button>
