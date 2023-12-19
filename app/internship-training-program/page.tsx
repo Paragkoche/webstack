@@ -401,6 +401,7 @@ const page = () => {
         <div className="internship-form-container">
           <Card>
             <form onSubmit={SubmitHandel}>
+              <h3>Internship Training Program</h3>
               <Flex direction="column" gap="3">
                 {inputElements.map((iE, i) => (
                   <div key={i} className="formElement">

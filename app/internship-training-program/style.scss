@@ -17,3 +17,16 @@
     }
   }
 }
+
+/* //*------------> tablet
+
+@media screen and (min-width: 820px) {
+}
+ */
+//*---------->> desktop
+
+@media screen and (min-width: 1025px) {
+  #internshipFormMain {
+    padding: 6vw 10vw;
+  }
+}
