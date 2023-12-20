@@ -98,7 +98,7 @@ export const inputElements: Array<elements> = [
     placeHolder: "Enter your Education / Degree and Major",
     size: "3",
     TextField: TextField.Input,
-    name: "educationDegreeAndMajor",
+    name: "EducationDegreeAndMajor",
     required: false,
   },
   {
@@ -107,7 +107,7 @@ export const inputElements: Array<elements> = [
     placeHolder: "Enter your Expected Graduation Year",
     size: "3",
     TextField: TextField.Input,
-    name: "expectedGraduationYear",
+    name: "ExpectedGraduationYear",
     required: false,
   },
   {

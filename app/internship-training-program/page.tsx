@@ -67,8 +67,9 @@ const page = () => {
       alert(ss.message);
     } else {
       console.log(ss);
-
       console.log("formData --->>>>", formData);
+      
+      setFormData({});
     }
   };
 
