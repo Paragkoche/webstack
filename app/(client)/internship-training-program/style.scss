@@ -1,4 +1,6 @@
 #internshipFormMain {
+  position: relative;
+  z-index: 9999;
   max-width: 100vw;
   //*-temp
   //height: 100vh;
@@ -7,6 +9,19 @@
 
   .internship-form-container {
     width: 100%;
+
+    .form-title {
+      button {
+        width: fit-content;
+      }
+      margin-bottom: 10px;
+
+      .title-desc {
+        width: 100%;
+        margin-bottom: 5px;
+        font-size: small;
+      }
+    }
 
     .formElement {
       display: flex;
@@ -22,15 +37,32 @@
   }
 }
 
-/* //*------------> tablet
+//*------------> tablet
 
 @media screen and (min-width: 820px) {
+  #internshipFormMain {
+    .internship-form-container {
+      .form-title {
+        .title-desc {
+          width: 50%;
+        }
+      }
+    }
+  }
 }
- */
+
 //*---------->> desktop
 
 @media screen and (min-width: 1025px) {
   #internshipFormMain {
-    padding: 6vw 10vw;
+    padding: 6vw 20vw;
+
+    .internship-form-container {
+      .form-title {
+        .title-desc {
+          width: 30%;
+        }
+      }
+    }
   }
 }

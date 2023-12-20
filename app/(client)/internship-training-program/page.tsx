@@ -19,6 +19,7 @@ import { inputElements } from "./db";
 import { useState, ChangeEvent, useEffect } from "react";
 import { addData } from "@/supabase/addData";
 import { useRouter } from "next/navigation";
+import Dialogue from "@/components/form/Dialogue";
 
 type FormData = {
   [key: string]: string | number | boolean | undefined | string[];
@@ -119,7 +120,15 @@ const page = () => {
             </AlertDialog.Root>
 
             <form onSubmit={handleFormSubmit}>
-              <h3>Internship Training Program</h3>
+              <Flex direction="column" gap="1" className="form-title">
+                <h3>Internship Training Program</h3>
+                <Text className="title-desc">
+                  Are you ready to embark on an exciting journey into the world
+                  of web development? Look no further!
+                </Text>
+                <Dialogue />
+              </Flex>
+
               <Flex direction="column" gap="3">
                 {inputElements.map((iE, i) => (
                   <div key={i} className="formElement">
