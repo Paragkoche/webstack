@@ -54,9 +54,12 @@ export default () => {
                   </a>
                 </li>
                 <li className="header-nav-list-item show-in-tablet header-nav-btn">
-                  <a href="/contact" className="btn-primary width-100 w-button">
-                    Contact us
-                  </a>
+                  <Link
+                    href="/admin"
+                    className="btn-primary width-100 w-button"
+                  >
+                    Sign In
+                  </Link>
                 </li>
               </ul>
             </nav>
