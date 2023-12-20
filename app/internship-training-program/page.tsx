@@ -140,7 +140,10 @@ const page = () => {
                               onCheckedChange={(checked) => {
                                 handleCheckBox("none", checked);
                                 setIsNone(!isNone);
-                                setCheckBox([]);
+                                setFormData((prevData: any) => ({
+                                  ...prevData,
+                                  programming_languages: [],
+                                }));
                               }}
                             />
                             none
