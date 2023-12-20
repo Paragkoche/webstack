@@ -63,10 +63,10 @@ export default () => {
           </div>
           <div className="header-right-side">
             <a
-              href="/contact"
+              href="/admin"
               className="btn-primary small header-btn-hidde-on-mb w-button"
             >
-              Contact us
+              Sign In
             </a>
             <div
               onClick={() => isOpen((s) => !s)}
