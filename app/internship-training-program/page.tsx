@@ -382,7 +382,9 @@ const page = () => {
                     )}
                   </div>
                 ))}
-                <Button>Apply</Button>
+                <Button color="crimson" variant="solid" size="3">
+                  Apply
+                </Button>
               </Flex>
             </form>
           </Card>
