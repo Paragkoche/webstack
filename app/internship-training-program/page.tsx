@@ -18,14 +18,20 @@ import { inputElements } from "./db";
 import { useState, ChangeEvent, useEffect } from "react";
 
 type FormData = {
-  [key: string]: string | number | boolean | undefined;
+  [key: string]: string | number | boolean | undefined | string[];
 };
+
+type checkBox = string[];
 
 const page = () => {
   const [formData, setFormData] = useState<FormData>({
     ["experience"]: false,
     ["scope"]: false,
   });
+
+  const [checkBox, setCheckBox] = useState<checkBox>([]);
+  const [isNone, setIsNone] = useState<boolean>(true);
+  const [other, setOther] = useState<string>("");
 
   const handleInputChange = (
     name: string,
@@ -37,10 +43,30 @@ const page = () => {
     }));
   };
 
+  const handleCheckBox = (name: string, value: boolean | string) => {
+    if (value) {
+      setCheckBox((prevData) => [...prevData, name]);
+    } else {
+      if (checkBox.indexOf(name) !== -1) {
+        setCheckBox((prevData) => prevData.filter((value) => value !== name));
+      }
+    }
+  };
+  //console.log("checkBox", checkBox);
+
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setCheckBox((prevData) => [...prevData, other]);
+
+    setFormData((prevData) => ({
+      ...prevData,
+      programming_languages: new Array(...new Set(checkBox)),
+    }));
+
     console.log("formData", formData);
   };
+
+  //console.log("isNone", isNone);
 
   return (
     <Theme appearance="dark">
@@ -92,43 +118,116 @@ const page = () => {
                     )}
                     {iE.checkBox && (
                       <Flex direction="column" gap="3">
-                        <Text as="label" size="2">
+                        <Text as="label" size="2" className="checkbox">
                           <Flex gap="2">
-                            <Checkbox size="1" />
+                            <Checkbox
+                              size="1"
+                              defaultChecked
+                              checked={isNone}
+                              onCheckedChange={(checked) => {
+                                handleCheckBox("none", checked);
+                                setIsNone(!isNone);
+                                setCheckBox([]);
+                              }}
+                            />
                             none
                           </Flex>
                         </Text>
-                        <Text as="label" size="2">
+                        <Text
+                          as="label"
+                          size="2"
+                          htmlFor="HTML"
+                          className="checkbox"
+                          onClick={() => {
+                            setIsNone(false);
+                          }}
+                        >
                           <Flex gap="2">
-                            <Checkbox size="1" /> HTML
+                            <Checkbox
+                              size="1"
+                              disabled={isNone}
+                              checked={checkBox.indexOf("HTML") !== -1}
+                              onCheckedChange={(checked) => {
+                                handleCheckBox("HTML", checked);
+                              }}
+                              id="HTML"
+                            />
+                            HTML
                           </Flex>
                         </Text>
-                        <Text as="label" size="2">
+                        <Text as="label" size="2" className="checkbox">
                           <Flex gap="2">
-                            <Checkbox size="1" /> CSS
+                            <Checkbox
+                              size="1"
+                              disabled={isNone}
+                              checked={checkBox.indexOf("CSS") !== -1}
+                              onCheckedChange={(checked) => {
+                                handleCheckBox("CSS", checked);
+                              }}
+                            />
+                            CSS
                           </Flex>
                         </Text>
-                        <Text as="label" size="2">
+                        <Text as="label" size="2" className="checkbox">
                           <Flex gap="2">
-                            <Checkbox size="1" /> Javascript
+                            <Checkbox
+                              size="1"
+                              checked={checkBox.indexOf("Javascript") !== -1}
+                              disabled={isNone}
+                              onCheckedChange={(checked) => {
+                                handleCheckBox("Javascript", checked);
+                              }}
+                            />
+                            Javascript
                           </Flex>
                         </Text>
-                        <Text as="label" size="2">
+                        <Text as="label" size="2" className="checkbox">
                           <Flex gap="2">
-                            <Checkbox size="1" /> React
+                            <Checkbox
+                              size="1"
+                              checked={checkBox.indexOf("React") !== -1}
+                              disabled={isNone}
+                              onCheckedChange={(checked) => {
+                                handleCheckBox("React", checked);
+                              }}
+                            />
+                            React
                           </Flex>
                         </Text>
-                        <Text as="label" size="2">
+                        <Text as="label" size="2" className="checkbox">
                           <Flex gap="2">
-                            <Checkbox size="1" /> Angular
+                            <Checkbox
+                              size="1"
+                              checked={checkBox.indexOf("Angular") !== -1}
+                              disabled={isNone}
+                              onCheckedChange={(checked) => {
+                                handleCheckBox("Angular", checked);
+                              }}
+                            />
+                            Angular
                           </Flex>
                         </Text>
-                        <Text as="label" size="2">
+                        <Text as="label" size="2" className="checkbox">
                           <Flex gap="2">
-                            <Checkbox size="1" /> Node
+                            <Checkbox
+                              size="1"
+                              checked={checkBox.indexOf("Node") !== -1}
+                              disabled={isNone}
+                              onCheckedChange={(checked) => {
+                                handleCheckBox("Node", checked);
+                              }}
+                            />
+                            Node
                           </Flex>
                         </Text>
-                        <TextField.Input placeholder="Other.." size="3" />
+                        <TextField.Input
+                          disabled={isNone}
+                          placeholder="Other.."
+                          size="3"
+                          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                            setOther(e.target.value)
+                          }
+                        />
                       </Flex>
                     )}
                     {iE.RadioGroupTwo && (
