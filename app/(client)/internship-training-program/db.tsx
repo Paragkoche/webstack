@@ -40,18 +40,18 @@ type elements = {
 
 export const inputElements: Array<elements> = [
   {
-    Lable: "Full Name:*",
+    Lable: "Full Name: *",
     type: "input",
-    placeHolder: "Enter your Full Name",
+    placeHolder: "Full Name (Required)",
     size: "3",
     TextField: TextField.Input,
     name: "name",
     required: true,
   },
   {
-    Lable: "Contact Number (with country code):*",
+    Lable: "Contact Number (with country code): *",
     type: "input",
-    placeHolder: "start with +91",
+    placeHolder: "start with +91, (Required)",
     size: "3",
     TextField: TextField.Input,
     name: "contactNumber",
@@ -75,9 +75,9 @@ export const inputElements: Array<elements> = [
     },
   },
   {
-    Lable: "Email:*",
+    Lable: "Email: *",
     type: "email",
-    placeHolder: "Enter your Email Address",
+    placeHolder: "Email Address (Required)",
     size: "3",
     TextField: TextField.Input,
     name: "email",
@@ -86,7 +86,7 @@ export const inputElements: Array<elements> = [
   {
     Lable: "Current Institution/University:",
     type: "input",
-    placeHolder: "Enter your Current Institution/University",
+    placeHolder: "Institution/University (not Required)",
     size: "3",
     TextField: TextField.Input,
     name: "currentInstitutionUniversity",
@@ -95,7 +95,7 @@ export const inputElements: Array<elements> = [
   {
     Lable: "Education / Degree and Major:",
     type: "input",
-    placeHolder: "Enter your Education / Degree and Major",
+    placeHolder: "Education / Degree and Major (not Required)",
     size: "3",
     TextField: TextField.Input,
     name: "EducationDegreeAndMajor",
@@ -104,7 +104,7 @@ export const inputElements: Array<elements> = [
   {
     Lable: "Expected Graduation Year:",
     type: "input",
-    placeHolder: "Enter your Expected Graduation Year",
+    placeHolder: "Expected Graduation Year (not Required)",
     size: "3",
     TextField: TextField.Input,
     name: "ExpectedGraduationYear",
@@ -112,7 +112,7 @@ export const inputElements: Array<elements> = [
   },
   {
     Lable:
-      "Any previous experience in software development or related fields?*",
+      "Any previous experience in software development or related fields? *",
     type: "input",
     placeHolder: "Select your experience",
     size: "3",
@@ -121,7 +121,7 @@ export const inputElements: Array<elements> = [
     RadioGroupOne: RadioGroup.Root,
   },
   {
-    Lable: "List programming languages you are familiar with:*",
+    Lable: "List programming languages you are familiar with: *",
     type: "input",
     placeHolder: "Select your programming languages",
     size: "3",
@@ -130,7 +130,7 @@ export const inputElements: Array<elements> = [
     checkBox: Checkbox,
   },
   {
-    Lable: "Are you familiar with front-end or back-end development?*",
+    Lable: "Are you familiar with front-end or back-end development? *",
     type: "input",
     placeHolder: "Select your experience",
     size: "3",
@@ -141,9 +141,9 @@ export const inputElements: Array<elements> = [
 
   {
     Lable:
-      "Why are you interested in the Full-Stack Development Internship Program?*",
+      "Why are you interested in the Full-Stack Development Internship Program? *",
     type: "input",
-    placeHolder: "short answer",
+    placeHolder: "Short Answer (Required)",
     size: "3",
     TextField: TextField.Input,
     name: "intrusted",
@@ -151,9 +151,9 @@ export const inputElements: Array<elements> = [
   },
   {
     Lable:
-      "What specific skills or knowledge do you hope to gain from this internship?*",
+      "What specific skills or knowledge do you hope to gain from this internship? *",
     type: "input",
-    placeHolder: "short answer",
+    placeHolder: "Short Answer (Required)",
     size: "3",
     TextField: TextField.Input,
     name: "skills",
@@ -163,16 +163,16 @@ export const inputElements: Array<elements> = [
     Lable:
       "Have you worked on any coding projects? If so, briefly describe them:",
     type: "input",
-    placeHolder: "Enter your projects",
+    placeHolder: "Describe Projects (not Required)",
     size: "3",
     TextField: TextField.Input,
     name: "project",
     required: false,
   },
   {
-    Lable: "Is there anything else you would like us to know about you?*",
+    Lable: "Is there anything else you would like us to know about you?",
     type: "input",
-    placeHolder: "short answer",
+    placeHolder: "Answer (not Required)",
     size: "3",
     TextField: TextField.Input,
     name: "aboutYou",
