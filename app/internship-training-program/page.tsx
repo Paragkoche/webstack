@@ -12,17 +12,21 @@ import {
   Responsive,
   RadioGroup,
   Checkbox,
+  AlertDialog,
 } from "@radix-ui/themes";
 
 import { inputElements } from "./db";
 import { useState, ChangeEvent, useEffect } from "react";
 import { addData } from "@/supabase/addData";
+import { useRouter } from "next/navigation";
 
 type FormData = {
   [key: string]: string | number | boolean | undefined | string[];
 };
 
 const page = () => {
+  const router = useRouter();
+
   const [formData, setFormData] = useState<FormData | any>({
     ["experience"]: false,
     ["scope"]: false,
@@ -30,6 +34,7 @@ const page = () => {
   });
 
   const [isNone, setIsNone] = useState<boolean>(true);
+  const [success, setSuccess] = useState<boolean>(false);
 
   const handleInputChange = (
     name: string,
@@ -62,15 +67,17 @@ const page = () => {
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    let ss = await addData(formData);
-    if (ss instanceof Error) {
-      alert(ss.message);
-    } else {
-      console.log(ss);
-      console.log("formData --->>>>", formData);
-      
-      setFormData({});
-    }
+    addData(formData)
+      .then((ss: any) => {
+        if (ss instanceof Error) {
+          alert(ss.message);
+        } else {
+          console.log(ss);
+          console.log("formData --->>>>", formData);
+          setSuccess(true);
+        }
+      })
+      .catch((err) => alert(err));
   };
 
   return (
@@ -78,6 +85,35 @@ const page = () => {
       <section id="internshipFormMain">
         <div className="internship-form-container">
           <Card>
+            <AlertDialog.Root open={success}>
+              <AlertDialog.Content style={{ maxWidth: 450 }}>
+                <AlertDialog.Title>
+                  Form Sublited Successfully!
+                </AlertDialog.Title>
+                <AlertDialog.Description size="3">
+                  Thank you for your interest.
+                </AlertDialog.Description>
+                <AlertDialog.Description size="2">
+                  We will call or email you as soon as possible.
+                </AlertDialog.Description>
+
+                <Flex gap="3" mt="4" justify="end">
+                  <AlertDialog.Cancel>
+                    <Button
+                      variant="soft"
+                      color="gray"
+                      onClick={() => {
+                        setSuccess(false);
+                        router.refresh();
+                      }}
+                    >
+                      Cancel
+                    </Button>
+                  </AlertDialog.Cancel>
+                </Flex>
+              </AlertDialog.Content>
+            </AlertDialog.Root>
+
             <form onSubmit={handleFormSubmit}>
               <h3>Internship Training Program</h3>
               <Flex direction="column" gap="3">
