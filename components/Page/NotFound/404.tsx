@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export default () => {
   return (
@@ -20,7 +20,7 @@ export default () => {
                 </p>
               </div>
               <div className="buttons-row center">
-                <Link to="/" className="btn-primary button-row w-button">
+                <Link href="/" className="btn-primary button-row w-button">
                   Back home
                 </Link>
               </div>
