@@ -30,9 +30,7 @@ const page = () => {
     programming_languages: [],
   });
 
-  const [checkBox, setCheckBox] = useState<checkBox>([]);
   const [isNone, setIsNone] = useState<boolean>(true);
-  const [other, setOther] = useState<string>("");
 
   const handleInputChange = (
     name: string,
@@ -45,7 +43,7 @@ const page = () => {
   };
 
   const handleCheckBox = (name: string, value: boolean | string) => {
-    console.log(value);
+    //console.log(value);
 
     if (value) {
       setFormData((prevData: any) => ({
@@ -77,7 +75,7 @@ const page = () => {
 
     console.log("formData --->>>>", formData);
   };
-  console.log("formData", formData);
+  //console.log("formData", formData);
 
   //console.log("isNone", isNone);
 
@@ -140,7 +138,10 @@ const page = () => {
                               onCheckedChange={(checked) => {
                                 handleCheckBox("none", checked);
                                 setIsNone(!isNone);
-                                setCheckBox([]);
+                                setFormData((prevData: any) => ({
+                                  ...prevData,
+                                  programming_languages: [],
+                                }));
                               }}
                             />
                             none
@@ -172,7 +173,14 @@ const page = () => {
                             HTML
                           </Flex>
                         </Text>
-                        <Text as="label" size="2" className="checkbox">
+                        <Text
+                          as="label"
+                          size="2"
+                          className="checkbox"
+                          onClick={() => {
+                            setIsNone(false);
+                          }}
+                        >
                           <Flex gap="2">
                             <Checkbox
                               size="1"
@@ -189,7 +197,14 @@ const page = () => {
                             CSS
                           </Flex>
                         </Text>
-                        <Text as="label" size="2" className="checkbox">
+                        <Text
+                          as="label"
+                          size="2"
+                          className="checkbox"
+                          onClick={() => {
+                            setIsNone(false);
+                          }}
+                        >
                           <Flex gap="2">
                             <Checkbox
                               size="1"
@@ -206,7 +221,14 @@ const page = () => {
                             Javascript
                           </Flex>
                         </Text>
-                        <Text as="label" size="2" className="checkbox">
+                        <Text
+                          as="label"
+                          size="2"
+                          className="checkbox"
+                          onClick={() => {
+                            setIsNone(false);
+                          }}
+                        >
                           <Flex gap="2">
                             <Checkbox
                               size="1"
@@ -223,7 +245,14 @@ const page = () => {
                             React
                           </Flex>
                         </Text>
-                        <Text as="label" size="2" className="checkbox">
+                        <Text
+                          as="label"
+                          size="2"
+                          className="checkbox"
+                          onClick={() => {
+                            setIsNone(false);
+                          }}
+                        >
                           <Flex gap="2">
                             <Checkbox
                               size="1"
@@ -240,7 +269,14 @@ const page = () => {
                             Angular
                           </Flex>
                         </Text>
-                        <Text as="label" size="2" className="checkbox">
+                        <Text
+                          as="label"
+                          size="2"
+                          className="checkbox"
+                          onClick={() => {
+                            setIsNone(false);
+                          }}
+                        >
                           <Flex gap="2">
                             <Checkbox
                               size="1"
