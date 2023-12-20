@@ -72,9 +72,13 @@ const page = () => {
         if (ss instanceof Error) {
           alert(ss.message);
         } else {
-          console.log(ss);
-          console.log("formData --->>>>", formData);
-          setSuccess(true);
+          if (ss.error) {
+            alert(ss.error.message);
+          } else {
+            console.log(ss);
+            console.log("formData --->>>>", formData);
+            setSuccess(true);
+          }
         }
       })
       .catch((err) => alert(err));
@@ -104,7 +108,7 @@ const page = () => {
                       color="gray"
                       onClick={() => {
                         setSuccess(false);
-                        router.refresh();
+                        router.back();
                       }}
                     >
                       Cancel
