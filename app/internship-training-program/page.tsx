@@ -59,16 +59,16 @@ const page = () => {
     }
   };
 
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    //console.log("formData --->>>>", formData);
-    try {
+    let ss = await addData(formData);
+    if (ss instanceof Error) {
+      alert(ss.message);
+    } else {
+      console.log(ss);
+
       console.log("formData --->>>>", formData);
-      addData(formData);
-    } catch (error: any) {
-      alert(error.message);
-      console.error("Error adding data:", error.message);
     }
   };
 
