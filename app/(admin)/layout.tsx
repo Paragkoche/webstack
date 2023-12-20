@@ -3,7 +3,7 @@ import { ClerkProvider, SignOutButton, auth } from "@clerk/nextjs";
 import "./global.scss";
 import Header from "@/components/admin/Header";
 import Link from "next/link";
-
+import { dark } from "@clerk/themes";
 export const metadata: Metadata = {
   title: "WebStack | Empowering Your Digital Presence",
   description:
@@ -17,7 +17,11 @@ export default function RootLayout({
 }) {
   const { userId } = auth();
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+      }}
+    >
       <html lang="en" suppressHydrationWarning>
         <body>
           {userId === process.env.Admin_Sahil_USER_ID ||
