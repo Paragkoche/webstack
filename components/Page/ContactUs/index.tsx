@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import axios from "axios";
 import { useState } from "react";
 export default () => {
@@ -74,7 +74,7 @@ export default () => {
               <div className="inner-container _311px _100-tablet">
                 <div className="w-layout-grid grid-1-column gap-row-20px _2-col-tablet _1-col-mbp">
                   <Link
-                    to="mailto:webstack.org@gmail.com"
+                    href="mailto:webstack.org@gmail.com"
                     className="card link-card contact w-inline-block"
                   >
                     <div className="card-contact-icon">
@@ -83,7 +83,7 @@ export default () => {
                     <div className="text-200 bold">support@webstack.in</div>
                   </Link>
                   <Link
-                    to="tel:+91 8080754160"
+                    href="tel:+91 8080754160"
                     className="card link-card contact w-inline-block"
                   >
                     <div className="card-contact-icon">
