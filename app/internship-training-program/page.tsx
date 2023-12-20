@@ -16,6 +16,7 @@ import {
 
 import { inputElements } from "./db";
 import { useState, ChangeEvent, useEffect } from "react";
+import { addData } from "@/supabase/addData";
 
 type FormData = {
   [key: string]: string | number | boolean | undefined | string[];
@@ -65,15 +66,17 @@ const page = () => {
   };
   //console.log("checkBox", checkBox);
 
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // setFormData((prevData:any) => ({
-    //   ...prevData,
-    //   programming_languages: new Array(...new Set(checkBox)),
-    // }));
+    let ss = await addData(formData);
+    if (ss instanceof Error) {
+      alert(ss.message);
+    } else {
+      console.log(ss);
 
-    console.log("formData --->>>>", formData);
+      console.log("formData --->>>>", formData);
+    }
   };
   //console.log("formData", formData);
 
