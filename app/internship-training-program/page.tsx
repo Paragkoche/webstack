@@ -24,9 +24,10 @@ type FormData = {
 type checkBox = string[];
 
 const page = () => {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormData | any>({
     ["experience"]: false,
     ["scope"]: false,
+    programming_languages: [],
   });
 
   const [checkBox, setCheckBox] = useState<checkBox>([]);
@@ -37,18 +38,30 @@ const page = () => {
     name: string,
     value: string | number | boolean | undefined
   ) => {
-    setFormData((prevData) => ({
+    setFormData((prevData: any) => ({
       ...prevData,
       [name]: value,
     }));
   };
 
   const handleCheckBox = (name: string, value: boolean | string) => {
+    console.log(value);
+
     if (value) {
-      setCheckBox((prevData) => [...prevData, name]);
+      setFormData((prevData: any) => ({
+        ...prevData,
+        programming_languages: [...prevData["programming_languages"], name],
+      }));
     } else {
-      if (checkBox.indexOf(name) !== -1) {
-        setCheckBox((prevData) => prevData.filter((value) => value !== name));
+      if (formData.programming_languages.indexOf(name) !== -1) {
+        setFormData((prevData: any) => ({
+          ...prevData,
+          programming_languages: prevData["programming_languages"].filter(
+            (value: any) => value !== name
+          ),
+        }));
+
+        // setCheckBox((prevData) => prevData.filter((value) => value !== name));
       }
     }
   };
@@ -56,15 +69,15 @@ const page = () => {
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setCheckBox((prevData) => [...prevData, other]);
 
-    setFormData((prevData) => ({
-      ...prevData,
-      programming_languages: new Array(...new Set(checkBox)),
-    }));
+    // setFormData((prevData:any) => ({
+    //   ...prevData,
+    //   programming_languages: new Array(...new Set(checkBox)),
+    // }));
 
-    console.log("formData", formData);
+    console.log("formData --->>>>", formData);
   };
+  console.log("formData", formData);
 
   //console.log("isNone", isNone);
 
@@ -146,7 +159,11 @@ const page = () => {
                             <Checkbox
                               size="1"
                               disabled={isNone}
-                              checked={checkBox.indexOf("HTML") !== -1}
+                              checked={
+                                formData.programming_languages.indexOf(
+                                  "HTML"
+                                ) !== -1
+                              }
                               onCheckedChange={(checked) => {
                                 handleCheckBox("HTML", checked);
                               }}
@@ -160,7 +177,11 @@ const page = () => {
                             <Checkbox
                               size="1"
                               disabled={isNone}
-                              checked={checkBox.indexOf("CSS") !== -1}
+                              checked={
+                                formData.programming_languages.indexOf(
+                                  "CSS"
+                                ) !== -1
+                              }
                               onCheckedChange={(checked) => {
                                 handleCheckBox("CSS", checked);
                               }}
@@ -172,7 +193,11 @@ const page = () => {
                           <Flex gap="2">
                             <Checkbox
                               size="1"
-                              checked={checkBox.indexOf("Javascript") !== -1}
+                              checked={
+                                formData.programming_languages.indexOf(
+                                  "Javascript"
+                                ) !== -1
+                              }
                               disabled={isNone}
                               onCheckedChange={(checked) => {
                                 handleCheckBox("Javascript", checked);
@@ -185,7 +210,11 @@ const page = () => {
                           <Flex gap="2">
                             <Checkbox
                               size="1"
-                              checked={checkBox.indexOf("React") !== -1}
+                              checked={
+                                formData.programming_languages.indexOf(
+                                  "React"
+                                ) !== -1
+                              }
                               disabled={isNone}
                               onCheckedChange={(checked) => {
                                 handleCheckBox("React", checked);
@@ -198,7 +227,11 @@ const page = () => {
                           <Flex gap="2">
                             <Checkbox
                               size="1"
-                              checked={checkBox.indexOf("Angular") !== -1}
+                              checked={
+                                formData.programming_languages.indexOf(
+                                  "Angular"
+                                ) !== -1
+                              }
                               disabled={isNone}
                               onCheckedChange={(checked) => {
                                 handleCheckBox("Angular", checked);
@@ -211,7 +244,11 @@ const page = () => {
                           <Flex gap="2">
                             <Checkbox
                               size="1"
-                              checked={checkBox.indexOf("Node") !== -1}
+                              checked={
+                                formData.programming_languages.indexOf(
+                                  "Node"
+                                ) !== -1
+                              }
                               disabled={isNone}
                               onCheckedChange={(checked) => {
                                 handleCheckBox("Node", checked);
@@ -225,7 +262,10 @@ const page = () => {
                           placeholder="Other.."
                           size="3"
                           onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                            setOther(e.target.value)
+                            setFormData((prevData: any) => ({
+                              ...prevData,
+                              programming_languages_other: e.target.value,
+                            }))
                           }
                         />
                       </Flex>
