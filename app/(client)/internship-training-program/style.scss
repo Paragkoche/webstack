@@ -5,7 +5,7 @@
   //*-temp
   //height: 100vh;
   display: flex;
-  padding: 6vw 6vw;
+  padding: 6vh 6vw;
 
   .internship-form-container {
     width: 100%;
@@ -14,6 +14,7 @@
       button {
         width: fit-content;
       }
+
       margin-bottom: 10px;
 
       .title-desc {
@@ -55,14 +56,18 @@
 
 @media screen and (min-width: 1025px) {
   #internshipFormMain {
-    padding: 6vw 20vw;
+    padding: 6vh 20vw;
 
     .internship-form-container {
       .form-title {
         .title-desc {
-          width: 30%;
+          width: 40%;
         }
       }
     }
   }
+}
+
+.rt-DialogContent {
+  height: 75dvh;
 }
