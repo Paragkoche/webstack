@@ -16,12 +16,11 @@ import {
 
 import { inputElements } from "./db";
 import { useState, ChangeEvent, useEffect } from "react";
+import { addData } from "@/supabase/addData";
 
 type FormData = {
   [key: string]: string | number | boolean | undefined | string[];
 };
-
-type checkBox = string[];
 
 const page = () => {
   const [formData, setFormData] = useState<FormData | any>({
@@ -43,8 +42,6 @@ const page = () => {
   };
 
   const handleCheckBox = (name: string, value: boolean | string) => {
-    //console.log(value);
-
     if (value) {
       setFormData((prevData: any) => ({
         ...prevData,
@@ -58,26 +55,22 @@ const page = () => {
             (value: any) => value !== name
           ),
         }));
-
-        // setCheckBox((prevData) => prevData.filter((value) => value !== name));
       }
     }
   };
-  //console.log("checkBox", checkBox);
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // setFormData((prevData:any) => ({
-    //   ...prevData,
-    //   programming_languages: new Array(...new Set(checkBox)),
-    // }));
-
-    console.log("formData --->>>>", formData);
+    //console.log("formData --->>>>", formData);
+    try {
+      console.log("formData --->>>>", formData);
+      addData(formData);
+    } catch (error: any) {
+      alert(error.message);
+      console.error("Error adding data:", error.message);
+    }
   };
-  //console.log("formData", formData);
-
-  //console.log("isNone", isNone);
 
   return (
     <Theme appearance="dark">
@@ -94,9 +87,24 @@ const page = () => {
                     </Text>
                     {iE.TextField && (
                       <iE.TextField
-                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                          handleInputChange(iE.name, e.target.value)
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                          const Numvalue = e.target.value
+                            .replace(/[^0-9]/g, "")
+                            .slice(0, 12);
+                          handleInputChange(
+                            iE.name,
+                            iE.onKeyDown ? `+${Numvalue}` : e.target.value
+                          );
+                        }}
+                        value={
+                          iE.onKeyDown
+                            ? formData.contactNumber || "+"
+                            : undefined
                         }
+                        type={iE.type}
+                        inputMode={iE.inputMode}
+                        pattern={iE.pattern}
+                        onKeyDown={iE.onKeyDown}
                         placeholder={iE.placeHolder}
                         required={iE.required}
                         size={iE.size}

@@ -8,6 +8,8 @@ export const addData = async (data: any) => {
     timeSlot,
   }: { [x in string]: string } = data;
 
+  console.log("Data", data);
+
   if (name == "") return new Error("[error] please enter valid name");
   if (contactNumber == "")
     return new Error("[error] please enter Contact Number");
@@ -19,7 +21,7 @@ export const addData = async (data: any) => {
   }
   if (hoursOfWeek == "")
     return new Error(
-      "[error] please enter many hours per week can you commit to the internship?"
+      "[error] please enter: how many hours per week can you commit to the internship?"
     );
   if (hoursOfWeek != "") {
     if (parseInt(hoursOfWeek) > 0) {

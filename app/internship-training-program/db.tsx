@@ -9,6 +9,7 @@ import {
   RadioGroup,
   Checkbox,
 } from "@radix-ui/themes";
+import { KeyboardEvent } from "react";
 
 type elements = {
   Lable: string;
@@ -22,11 +23,24 @@ type elements = {
   RadioGroupOne?: typeof RadioGroup.Root;
   RadioGroupTwo?: typeof RadioGroup.Root;
   checkBox?: typeof Checkbox;
+  inputMode?:
+    | "search"
+    | "text"
+    | "none"
+    | "tel"
+    | "url"
+    | "email"
+    | "numeric"
+    | "decimal"
+    | undefined;
+  pattern?: string;
+  onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
+  onKeyDownHr?: (e: KeyboardEvent<HTMLInputElement>) => void;
 };
 
 export const inputElements: Array<elements> = [
   {
-    Lable: "Full Name:",
+    Lable: "Full Name:*",
     type: "input",
     placeHolder: "Enter your Full Name",
     size: "3",
@@ -35,16 +49,42 @@ export const inputElements: Array<elements> = [
     required: true,
   },
   {
-    Lable: "Contact Number",
+    Lable: "Contact Number (with country code):*",
     type: "input",
-    placeHolder: "Enter your Contact Number",
+    placeHolder: "start with +91",
     size: "3",
     TextField: TextField.Input,
     name: "contactNumber",
     required: true,
+    inputMode: "tel",
+    pattern: "+[0-9]*",
+    onKeyDown: (e) => {
+      const isNumeric = /^[0-9]$/;
+      const isArrowKey = [
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowUp",
+        "ArrowDown",
+      ].includes(e.key);
+      const isShiftKey = e.key === "Shift";
+      const isBackspace = e.key === "Backspace" || e.key === "Delete";
+
+      if (!(isNumeric.test(e.key) || isArrowKey || isShiftKey || isBackspace)) {
+        e.preventDefault();
+      }
+    },
   },
   {
-    Lable: "Current Institution/University",
+    Lable: "Email:*",
+    type: "email",
+    placeHolder: "Enter your Email Address",
+    size: "3",
+    TextField: TextField.Input,
+    name: "email",
+    required: true,
+  },
+  {
+    Lable: "Current Institution/University:",
     type: "input",
     placeHolder: "Enter your Current Institution/University",
     size: "3",
@@ -53,7 +93,7 @@ export const inputElements: Array<elements> = [
     required: false,
   },
   {
-    Lable: "Education / Degree and Major",
+    Lable: "Education / Degree and Major:",
     type: "input",
     placeHolder: "Enter your Education / Degree and Major",
     size: "3",
@@ -62,7 +102,7 @@ export const inputElements: Array<elements> = [
     required: false,
   },
   {
-    Lable: "Expected Graduation Year",
+    Lable: "Expected Graduation Year:",
     type: "input",
     placeHolder: "Enter your Expected Graduation Year",
     size: "3",
@@ -71,7 +111,8 @@ export const inputElements: Array<elements> = [
     required: false,
   },
   {
-    Lable: "Any previous experience in software development or related fields?",
+    Lable:
+      "Any previous experience in software development or related fields?*",
     type: "input",
     placeHolder: "Select your experience",
     size: "3",
@@ -80,7 +121,7 @@ export const inputElements: Array<elements> = [
     RadioGroupOne: RadioGroup.Root,
   },
   {
-    Lable: "List programming languages you are familiar with.",
+    Lable: "List programming languages you are familiar with:*",
     type: "input",
     placeHolder: "Select your programming languages",
     size: "3",
@@ -89,7 +130,7 @@ export const inputElements: Array<elements> = [
     checkBox: Checkbox,
   },
   {
-    Lable: "Are you familiar with front-end or back-end development?",
+    Lable: "Are you familiar with front-end or back-end development?*",
     type: "input",
     placeHolder: "Select your experience",
     size: "3",
@@ -97,29 +138,12 @@ export const inputElements: Array<elements> = [
     required: true,
     RadioGroupTwo: RadioGroup.Root,
   },
-  {
-    Lable: "How many hours per week can you commit to the internship?",
-    type: "input",
-    placeHolder: "Enter Hours",
-    size: "3",
-    TextField: TextField.Input,
-    name: "hourOfWeek",
-    required: true,
-  },
-  {
-    Lable: "Specify your preferred time slots for the internship.",
-    type: "input",
-    placeHolder: "Enter time slot",
-    size: "3",
-    TextField: TextField.Input,
-    name: "timeSlot",
-    required: true,
-  },
+
   {
     Lable:
-      "Why are you interested in the Full-Stack Development Internship Program?",
+      "Why are you interested in the Full-Stack Development Internship Program?*",
     type: "input",
-    placeHolder: "Enter your interest",
+    placeHolder: "short answer",
     size: "3",
     TextField: TextField.Input,
     name: "intrusted",
@@ -127,9 +151,9 @@ export const inputElements: Array<elements> = [
   },
   {
     Lable:
-      "What specific skills or knowledge do you hope to gain from this internship?",
+      "What specific skills or knowledge do you hope to gain from this internship?*",
     type: "input",
-    placeHolder: "Enter your skills",
+    placeHolder: "short answer",
     size: "3",
     TextField: TextField.Input,
     name: "skills",
@@ -137,7 +161,7 @@ export const inputElements: Array<elements> = [
   },
   {
     Lable:
-      "Have you worked on any coding projects? If so, briefly describe them.",
+      "Have you worked on any coding projects? If so, briefly describe them:",
     type: "input",
     placeHolder: "Enter your projects",
     size: "3",
@@ -146,9 +170,9 @@ export const inputElements: Array<elements> = [
     required: false,
   },
   {
-    Lable: "Is there anything else you would like us to know about you?",
+    Lable: "Is there anything else you would like us to know about you?*",
     type: "input",
-    placeHolder: "Enter hear",
+    placeHolder: "short answer",
     size: "3",
     TextField: TextField.Input,
     name: "aboutYou",
