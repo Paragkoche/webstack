@@ -62,6 +62,8 @@ const FormData = async () => {
     }
   }
 
+  let serialNumber = 1;
+
   return (
     <Theme appearance="dark">
       <div className="container">
@@ -69,6 +71,7 @@ const FormData = async () => {
         <Table.Root variant="surface">
           <Table.Header>
             <Table.Row>
+              <Table.ColumnHeaderCell>Sr. no.</Table.ColumnHeaderCell>
               <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
               <Table.ColumnHeaderCell>Mob. No.</Table.ColumnHeaderCell>
               <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
@@ -90,6 +93,7 @@ const FormData = async () => {
           <Table.Body>
             {listData.map((data, i) => (
               <Table.Row key={i} className={getRowColor(data.created_at)}>
+                <Table.Cell>{serialNumber++}</Table.Cell>
                 <Table.RowHeaderCell>{data.name}</Table.RowHeaderCell>
                 <Table.Cell>{data.contactNumber}</Table.Cell>
                 <Table.Cell>{data.email}</Table.Cell>
