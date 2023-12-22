@@ -42,4 +42,4 @@ export const getData = async () =>
   await supabase
     .from("entrys")
     .select("*")
-    .order("crate", { ascending: false });
+    .order("created_at", { ascending: false });
