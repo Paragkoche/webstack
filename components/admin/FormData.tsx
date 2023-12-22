@@ -26,7 +26,7 @@ const FormData = async () => {
   const formData: any = await getData();
   const listData: Array<DATA> = formData.data;
 
-  console.log("Data ===>", listData);
+  //console.log("Data ===>", listData);
 
   function formatDateTime(dateTimeString: any) {
     const date = new Date(dateTimeString);
