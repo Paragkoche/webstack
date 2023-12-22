@@ -38,4 +38,8 @@ export const addData = async (data: any) => {
   return await supabase.from("entrys").insert(data);
 };
 
-export const getData = async () => await supabase.from("entrys").select("*");
+export const getData = async () =>
+  await supabase
+    .from("entrys")
+    .select("*")
+    .order("crate", { ascending: false });
