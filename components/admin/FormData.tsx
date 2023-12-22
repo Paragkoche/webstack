@@ -26,7 +26,7 @@ const FormData = async () => {
   const formData: any = await getData();
   const listData: Array<DATA> = formData.data;
 
-  //console.log("Data ===>", listData);
+  console.log("Data ===>", listData);
 
   function formatDateTime(dateTimeString: any) {
     const date = new Date(dateTimeString);
@@ -62,7 +62,7 @@ const FormData = async () => {
     }
   }
 
-  let serialNumber = 1;
+  let serialNumber = listData.length;
 
   return (
     <Theme appearance="dark">
@@ -91,9 +91,9 @@ const FormData = async () => {
           </Table.Header>
 
           <Table.Body>
-            {listData.map((data, i) => (
-              <Table.Row key={i} className={getRowColor(data.created_at)}>
-                <Table.Cell>{serialNumber++}</Table.Cell>
+            {listData.map((data, id) => (
+              <Table.Row key={id} className={getRowColor(data.created_at)}>
+                <Table.Cell>{serialNumber--}</Table.Cell>
                 <Table.RowHeaderCell>{data.name}</Table.RowHeaderCell>
                 <Table.Cell>{data.contactNumber}</Table.Cell>
                 <Table.Cell>{data.email}</Table.Cell>
