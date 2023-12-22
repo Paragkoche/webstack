@@ -2,6 +2,7 @@ import { Table, Theme } from "@radix-ui/themes";
 import React from "react";
 import "@radix-ui/themes/styles.css";
 import { getData } from "@/supabase/addData";
+import "./style.scss";
 
 type DATA = {
   id: string;
@@ -68,8 +69,8 @@ const FormData = async () => {
     <Theme appearance="dark">
       <div className="container">
         <h3>Internship FormData</h3>
-        <Table.Root variant="surface">
-          <Table.Header>
+        <Table.Root variant="surface" className="table-main">
+          <Table.Header className="table-header">
             <Table.Row>
               <Table.ColumnHeaderCell>Sr. no.</Table.ColumnHeaderCell>
               <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
