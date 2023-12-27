@@ -4,9 +4,11 @@ import "./Navbar.css";
 import { useState } from "react";
 import Link from "next/link";
 import Logo from "../svg/Logo";
+import { useUser } from "@clerk/nextjs";
 
 export default () => {
   const [open, isOpen] = useState(false);
+  const { user, isLoaded } = useUser();
   return (
     <div
       className="header-wrapper w-nav"
@@ -54,23 +56,36 @@ export default () => {
                   </a>
                 </li>
                 <li className="header-nav-list-item show-in-tablet header-nav-btn">
-                  <Link
-                    href="/admin"
-                    className="btn-primary width-100 w-button"
-                  >
-                    Sign In
-                  </Link>
+                  {isLoaded && user ? (
+                    <a href="/admin" className="btn-primary width-100 w-button">
+                      Dashboard
+                    </a>
+                  ) : (
+                    <a href="/auth" className="btn-primary width-100 w-button">
+                      Sign In
+                    </a>
+                  )}
                 </li>
               </ul>
             </nav>
           </div>
           <div className="header-right-side">
-            <a
-              href="/admin"
-              className="btn-primary small header-btn-hidde-on-mb w-button"
-            >
-              Sign In
-            </a>
+            {isLoaded && user ? (
+              <a
+                href="/admin"
+                className="btn-primary small header-btn-hidde-on-mb w-button"
+              >
+                Dashboard
+              </a>
+            ) : (
+              <a
+                href="/auth"
+                className="btn-primary small header-btn-hidde-on-mb w-button"
+              >
+                Sign In
+              </a>
+            )}
+
             <div
               onClick={() => isOpen((s) => !s)}
               className={
