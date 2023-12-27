@@ -102,7 +102,11 @@ const FormData = async () => {
                 <Table.Cell>{data.EducationDegreeAndMajor}</Table.Cell>
                 <Table.Cell>{data.ExpectedGraduationYear}</Table.Cell>
                 <Table.Cell>{data.experience.toString()}</Table.Cell>
-                <Table.Cell>{data.programming_languages.join(", ")}</Table.Cell>
+                <Table.Cell>
+                  {data.programming_languages
+                    ? data.programming_languages.join(", ")
+                    : ""}
+                </Table.Cell>
                 <Table.Cell>{data.programming_languages_other}</Table.Cell>
                 <Table.Cell>{data.scope}</Table.Cell>
                 <Table.Cell>{data.intrusted}</Table.Cell>
