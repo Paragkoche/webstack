@@ -75,3 +75,52 @@
 .open {
   height: 75dvh;
 }
+
+#internship-closed {
+  max-width: 100vw;
+  padding: 6vh 6vw;
+
+  display: grid;
+  place-content: center;
+
+  .card {
+    padding: 20px;
+
+    .flex {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      a {
+        text-decoration: none;
+        background-color: blue;
+        width: fit-content;
+        padding: 5px 10px;
+        border-radius: 10px;
+        display: grid;
+        place-content: center;
+      }
+    }
+  }
+}
+
+//*------------> tablet
+
+@media screen and (min-width: 820px) {
+  #internship-closed {
+    height: calc(100dvh - 111px);
+    padding: 0 6vw;
+  }
+}
+
+//*---------->> desktop
+
+@media screen and (min-width: 1025px) {
+  #internship-closed {
+    padding: 0 25vw;
+  }
+}
