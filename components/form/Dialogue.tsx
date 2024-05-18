@@ -24,8 +24,8 @@ const Dialogue = () => {
 
         <Dialog.Title size="2"> Program Overview:</Dialog.Title>
         <Dialog.Description size="2">
-          • Duration: 3 to 6 months <br />• Time Commitment: 1 to 2 hours per
-          day, 5 days a week
+          • Duration: 2 weeks <br />• Time Commitment: 1 to 2 hours per day, 5
+          days a week
         </Dialog.Description>
 
         <Separator my="3" size="1" />
